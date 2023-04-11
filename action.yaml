@@ -2,6 +2,9 @@
 name: 'Publish to Confluence'
 description: 'Publishes a jinja template to confluence'
 inputs:
+  confluence_base_url:
+    description: 'The base confluence url'
+    required: true
   confluence_pat:
     description: 'The confluence personal access token to use'
     required: true
@@ -22,6 +25,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.confluence_base_url }}
     - ${{ inputs.confluence_pat }}
     - ${{ inputs.confluence_username }}
     - ${{ inputs.confluence_space }}
