@@ -8,14 +8,14 @@ inputs:
   confluence_username:
     description: 'The confluence username for the provided personal access token.'
     required: true
-  confluence_space:
-    description: "The space the template page lives under"
-    required: true
   confluence_page:
     description: "The confluence page where the template will be published"
     required: true
-  template:
-    description: 'The path to the jinja2 template'
+  confluence_space:
+    description: "The space the template page lives under"
+    required: true
+  confluence_template:
+    description: 'The template to publish to confluence'
     required: true
 
 runs:
@@ -26,4 +26,4 @@ runs:
     - ${{ inputs.confluence_username }}
     - ${{ inputs.confluence_space }}
     - ${{ inputs.confluence_page }}
-    - ${{ inputs.template }}
+    - ${{ inputs.confluence_template }}

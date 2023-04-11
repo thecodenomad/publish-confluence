@@ -1,5 +1,12 @@
-FROM alpine:3.10
+FROM python:3.11.3-alpine3.17
 
-COPY entrypoint.sh /entrypoint.sh
+# Add Python Requirements
+RUN pip install atlassian-python-api \
+                bs4                  \
+                lxml                 \
+                jinja2
 
-ENTRYPOINT ["/entrypoint.sh"]cd 
+# Do the things
+COPY publish_to_confluence.py /publish_to_confluence.py
+
+ENTRYPOINT [ "python3", "/publish_to_confluence.py" ]
