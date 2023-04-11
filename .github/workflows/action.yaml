@@ -1,0 +1,29 @@
+# Ref: https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
+name: 'Publish to Confluence'
+description: 'Publishes a jinja template to confluence'
+inputs:
+  confluence_pat:
+    description: 'The confluence personal access token to use'
+    required: true
+  confluence_username:
+    description: 'The confluence username for the provided personal access token.'
+    required: true
+  confluence_space:
+    description: "The space the template page lives under"
+    required: true
+  confluence_page:
+    description: "The confluence page where the template will be published"
+    required: true
+  template:
+    description: 'The path to the jinja2 template'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.confluence_pat }}
+    - ${{ inputs.confluence_username }}
+    - ${{ inputs.confluence_space }}
+    - ${{ inputs.confluence_page }}
+    - ${{ inputs.template }}
