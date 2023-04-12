@@ -11,8 +11,11 @@ inputs:
   confluence_username:
     description: 'The confluence username for the provided personal access token.'
     required: true
-  confluence_page:
-    description: "The confluence page where the template will be published"
+  confluence_parent_page:
+    description: "The confluence page where the template will be published under"
+    required: true
+  confluence_page_title:
+    description: "The title of the page being published (date will be appended to this)"
     required: true
   confluence_space:
     description: "The space the template page lives under"
@@ -29,5 +32,6 @@ runs:
     - ${{ inputs.confluence_pat }}
     - ${{ inputs.confluence_username }}
     - ${{ inputs.confluence_space }}
-    - ${{ inputs.confluence_page }}
+    - ${{ inputs.confluence_parent_page }}
+    - ${{ inputs.confluence_page_title }}
     - ${{ inputs.confluence_template }}
