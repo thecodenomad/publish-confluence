@@ -36,5 +36,4 @@ def publish_to_confluence(confluence_api, space):
 try:
     publish_to_confluence(CONFLUENCE, CONFLUENCE_SPACE)
 except Exception as e:
-    print(f"Env vars:\n{os.environ}\n")
-    print(f"{e}")
+    print(f"Failed publishing to confluence due to:\n{e}")
