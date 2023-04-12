@@ -33,6 +33,8 @@ def publish_to_confluence(confluence_api, space):
 
 
 # Do the things
-publish_to_confluence(CONFLUENCE, CONFLUENCE_SPACE)
-
-print(f"Env vars:\n{os.environ}")
+try:
+    publish_to_confluence(CONFLUENCE, CONFLUENCE_SPACE)
+except Exception as e:
+    print(f"Env vars:\n{os.environ}\n")
+    print(f"{e}")
