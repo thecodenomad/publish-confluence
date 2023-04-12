@@ -12,17 +12,24 @@ inputs:
     description: 'The confluence username for the provided personal access token.'
     required: true
   confluence_parent_page:
-    description: "The confluence page where the template will be published under"
+    description: 'The confluence page where the template will be published under'
     required: true
   confluence_page_title:
-    description: "The title of the page being published (date will be appended to this)"
+    description: 'The title of the page being published (date will be appended to this)'
     required: true
   confluence_space:
-    description: "The space the template page lives under"
+    description: 'The space the template page lives under'
     required: true
   confluence_template:
     description: 'The template to publish to confluence'
     required: true
+  confluence_test_stats:
+    description: 'JSON formated stats for unittest, coverage, and meta reports'
+    required: true
+  confluence_test_output:
+    description: 'Test output report'
+    required: true
+
 
 runs:
   using: 'docker'
@@ -35,3 +42,5 @@ runs:
     - ${{ inputs.confluence_parent_page }}
     - ${{ inputs.confluence_page_title }}
     - ${{ inputs.confluence_template }}
+    - ${{ inputs.confluence_test_stats }}
+    - ${{ inputs.confluence_test_output }}
